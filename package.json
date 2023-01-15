@@ -1,0 +1,24 @@
+{
+  "name": "nasa-exploration",
+  "version": "1.0.0",
+  "description": "This a full stack project",
+  "main": "index.js",
+  "scripts": {
+    "deploy": "npm run build --prefix client && npm start --prefix server",
+    "server": "npm run watch --prefix server",
+    "client": "npm start --prefix client",
+    "watch": "npm run server & npm run client",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yayoamigo/Nasa-exploration.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yayoamigo/Nasa-exploration/issues"
+  },
+  "homepage": "https://github.com/yayoamigo/Nasa-exploration#readme"
+}
