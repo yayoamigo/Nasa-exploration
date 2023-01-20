@@ -37,7 +37,9 @@ function isHabitablePlanet(planet) {
   }
 
 async function getAllPlanets(){
-  return await planetas.find({})
+  return await planetas.find({},{
+    '_id': 0, '__v':0,
+  })
 }
 
 async function savePlanets(planet){
