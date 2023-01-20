@@ -1,4 +1,5 @@
 const launches = new Map();
+const launchis = require('./launches.mongo')
 
 let latestFlightNumber = 100;
 
@@ -15,6 +16,10 @@ const launch = {
 
 launches.set(launch.flightNumber, launch)
 
+function launchExist(launchId){
+    return launches.has(launchId);
+}
+
 function getAllLaunches(){
     return Array.from(launches.values())
 }
@@ -30,7 +35,16 @@ function addNewLauch(launch){
         }))
 }
 
+function abortedLaunches(launchId){
+    const aborted = launches.get(launchId)
+    aborted.success = false;
+    aborted.upcoming = false;
+    return aborted;
+}
+
 module.exports = {
+    launchExist,
     getAllLaunches,
     addNewLauch,
+    abortedLaunches
 };
