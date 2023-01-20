@@ -1,8 +1,7 @@
 const launchis = require('./launches.mongo')
-const launches = new Map();
+const planetas = require('./planets.mongo')
 
-
-let latestFlightNumber = 100;
+const DEFAULT_FLIGHT_NUMBER = 100;
 
 const launch = {
     flightNumber: 100,
@@ -17,43 +16,65 @@ const launch = {
 
 saveLaunch(launch)
 
-function launchExist(launchId){
-    return launches.has(launchId);
+async function launchExist(launchId){
+    return await launchis.findOne({
+        flightNumber: launchId
+    })
 }
 
-function getAllLaunches(){
-    return Array.from(launches.values())
+async function getLatesFligh(){
+    const latestLaunch = await launchis.findOne().sort('-flightNumber');
+    if(!latestLaunch){
+        return DEFAULT_FLIGHT_NUMBER
+    }
+    return latestLaunch.flightNumber
+}
+
+async function getAllLaunches(){
+    return await launchis.find({}, {
+        '_id':0,'__v':0
+    })
 }
 
 async function saveLaunch(launch){
-    await launchis.updateOne({
+    const planet = await planetas.findOne({
+        keplerName: launch.target,
+    })
+    if(!planet){
+        throw new Error('No matching planet was found')
+    }
+    await launchis.findOneAndUpdate({
         flightNumber: launch.flightNumber,
     }, launch, {
         upsert: true
     })
 }
 
-function addNewLauch(launch){
-    latestFlightNumber++;
-    launches.set(latestFlightNumber, Object.assign(launch,
+async function scheduleLaunch(launch){
+    const newflightNumber = await getLatesFligh() + 1
+    const newLaunch = Object.assign(launch,
         {
         customer: ['Nasa'],
         upcoming: true,
         success: true,
-        flightNumber:latestFlightNumber
-        }))
+        flightNumber:newflightNumber
+        })
+    await saveLaunch(newLaunch)
 }
 
-function abortedLaunches(launchId){
-    const aborted = launches.get(launchId)
-    aborted.success = false;
-    aborted.upcoming = false;
-    return aborted;
+async function abortedLaunches(launchId){
+   const aborted =  await launchis.updateOne({
+        flightNumber: launchId,
+    }, {
+        upcoming: false,
+        success: false,
+    })
+    return aborted.modifiedCount === 1;
 }
 
 module.exports = {
     launchExist,
     getAllLaunches,
-    addNewLauch,
+    scheduleLaunch,
     abortedLaunches
 };
