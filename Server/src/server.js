@@ -11,7 +11,7 @@ const mongoURL = 'mongodb+srv://yayoamigosoy:Floria0991@nasacluster.z0s3sd3.mong
 const server = http.createServer(app);
 
 mongoose.connection.once('open', ()=>{
-    console.log('Mongo conncection ready');
+    console.log('Mongo conncection ready!');
 })
 
 mongoose.connection.on('error', (err)=>{
