@@ -4,7 +4,7 @@ Welcome to the NASA Exoplanet Mission Simulator, a full stack application that a
 
 ## Getting Started
 
-To get started, clone the repository to your local machine and run `npm install` to install the necessary dependencies. Once the dependencies have been installed, you can start the development server by running `npm run start`. 
+To get started, clone the repository to your local machine and run `npm install` to install the necessary dependencies. Once the dependencies have been installed, you can start the development server by running `npm run watch`. 
 
 ## Features
 
@@ -20,7 +20,7 @@ To get started, clone the repository to your local machine and run `npm install`
 
 ## Initialize Server
 
-To start the server, run the command `npm run start`.
+To start the server, run the command `npm run deploy`.
 
 ## Contributions
 
