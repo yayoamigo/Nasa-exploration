@@ -20,7 +20,22 @@ To get started, clone the repository to your local machine and run `npm install`
 
 ## Initialize Server
 
-To start the server, run the command `npm run deploy`.
+To start the development server, run the command `npm run watch`.
+
+## Deployment
+
+To deploy the application, run the command `npm run deploy`
+
+To deploy the application in a cluster, run the command `npm run deploy-cluster`
+
+## Scripts
+
+- `npm run deploy`: Builds the client and starts the server
+- `npm run deploy-cluster`: Builds the client and starts the server in a cluster
+- `npm run server`: Starts the server
+- `npm run client`: Starts the client
+- `npm run watch`: Starts the client and server concurrently
+- `npm run test`: Runs any tests that are specified
 
 ## Contributions
 
@@ -32,4 +47,4 @@ If you would like to contribute to this project, please fork the repository and 
 
 ## License
 
-This project is licensed under the [insert license name] license
+This project is licensed under the ISC license.
