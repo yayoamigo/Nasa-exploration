@@ -1,4 +1,4 @@
-name: NASA-MISSION Project CI
+name: NASA-MISSIO Project CI
 on:
   push:
     branches: [ main ]
