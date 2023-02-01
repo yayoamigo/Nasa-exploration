@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/yayoamigo/Nasa-exploration#readme",
   "dependencies": {
+    "arwes": "^1.0.0-next.2",
     "axios": "^1.2.4",
     "dotenv": "^16.0.3",
     "react-dom": "^18.2.0",
