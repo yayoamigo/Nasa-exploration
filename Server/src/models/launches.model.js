@@ -75,7 +75,7 @@ async function findLaunch(filter) {
   return await launchesDatabase.findOne(filter);
 }
 
-async function existsLaunchWithId(launchId) {
+async function launchExist(launchId) {
   return await findLaunch({
     flightNumber: launchId,
   });
@@ -109,7 +109,7 @@ async function saveLaunch(launch) {
   });
 }
 
-async function scheduleNewLaunch(launch) {
+async function scheduleLaunch(launch) {
   const planet = await planets.findOne({
     keplerName: launch.target,
   });
@@ -130,7 +130,7 @@ async function scheduleNewLaunch(launch) {
   await saveLaunch(newLaunch);
 }
 
-async function abortLaunchById(launchId) {
+async function abortedLaunches(launchId) {
   const aborted = await launchesDatabase.updateOne({
     flightNumber: launchId,
   }, {
@@ -143,10 +143,10 @@ async function abortLaunchById(launchId) {
 
 module.exports = {
   loadLaunchData,
-  existsLaunchWithId,
+  launchExist,
   getAllLaunches,
-  scheduleNewLaunch,
-  abortLaunchById,
+  scheduleLaunch,
+  abortedLaunches,
 };
 
 // const axios = require('axios')
