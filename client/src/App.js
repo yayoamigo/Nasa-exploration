@@ -1,13 +1,13 @@
 import {
   BrowserRouter as Router,
 } from "react-router-dom";
-import Arwes, {
+import {
+  Arwes,
   SoundsProvider,
+  ThemeProvider,
   createSounds,
   createTheme,
-} from 'arwes';
-
-const { ThemeProvider } = Arwes;
+} from "arwes";
 
 import AppLayout from "./pages/AppLayout";
 
