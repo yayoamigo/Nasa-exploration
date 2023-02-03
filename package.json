@@ -4,7 +4,7 @@
   "description": "This a full stack project",
   "main": "index.js",
   "scripts": {
-    "deploy": "npm run build --prefix client && npm start --prefix server",
+    "deploy": "set BUILD_PATH=../server/public && npm run build --prefix client && npm start --prefix server",
     "deploy-cluster": "npm run build --prefix client && npm run cluster --prefix server",
     "server": "npm run watch --prefix server",
     "client": "npm start --prefix client",
@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/yayoamigo/Nasa-exploration#readme",
   "dependencies": {
-    "arwes": "^1.0.0-next.2",
+    "arwes": "^1.0.0-alpha.5",
     "axios": "^1.2.4",
     "dotenv": "^16.0.3",
     "react-dom": "^18.2.0",

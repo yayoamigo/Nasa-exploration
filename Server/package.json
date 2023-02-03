@@ -4,7 +4,8 @@
   "description": "Nasa mission control api",
   "main": "src/server.js",
   "scripts": {
-    "test": "jest",
+    "test": "jest --detectOpenHandles",
+    "test-watch": "jest --watch",
     "watch": "nodemon src/server.js",
     "start": "node src/server.js",
     "cluster": "pm2 start src/server.js -i max"
@@ -20,7 +21,8 @@
     "mongoose": "^6.8.4",
     "mongose": "^0.0.2-security",
     "morgan": "^1.10.0",
-    "pm2": "^5.2.2"
+    "pm2": "^5.2.2",
+    "react-scripts": "^5.0.1"
   },
   "devDependencies": {
     "jest": "^29.3.1",
