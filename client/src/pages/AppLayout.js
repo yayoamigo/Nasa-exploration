@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Switch, Route } from "react-router-dom";
+import { Route,  Routes } from "react-router-dom";
+
 
 import usePlanets from "../hooks/usePlanets";
 import useLaunches from "../hooks/useLaunches";
@@ -35,7 +36,7 @@ const AppLayout = props => {
       <Header onNav={animateFrame} />
       <Centered>
         <div style={{ padding: "20px" }}>
-          <Switch>
+          <Routes>
             <Route exact path="/">
               <Launch
                 planets={planets}
@@ -56,7 +57,7 @@ const AppLayout = props => {
             <Route exact path="/history">
               <History launches={launches} />
             </Route>
-          </Switch>
+          </Routes>
         </div>
       </Centered>
       <Footer />
