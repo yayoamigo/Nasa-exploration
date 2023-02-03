@@ -1,15 +1,33 @@
 const request = require('supertest');
 const app = require('../../app');
+const { 
+  mongoConnect,
+  mongoDisconnect,
+} = require('../../services/mongo');
+const {
+  loadPlanetsData,
+} = require('../../models/planets.model');
 
-describe('Test GET /launches', ()=>{
-    test('It should respond with 200 sucess', async () =>{
-        const response = await request(app).get('/launches').expect('Content-Type', /json/)
+describe('Launches API', () => {
+  beforeAll(async () => {
+    await mongoConnect();
+    await loadPlanetsData();
+  });
+
+  afterAll(async () => {
+    await mongoDisconnect();
+  });
+
+  describe('Test GET /launches', () => {
+    test('It should respond with 200 success', async () => {
+      const response = await request(app)
+        .get('/v1/launches')
+        .expect('Content-Type', /json/)
         .expect(200);
-    
     });
-});
-
-describe('Test POST /launch', () => {
+  });
+  
+  describe('Test POST /launch', () => {
     const completeLaunchData = {
       mission: 'USS Enterprise',
       rocket: 'NCC 1701-D',
@@ -68,3 +86,4 @@ describe('Test POST /launch', () => {
       });
     });
   });
+});
