@@ -4,6 +4,9 @@
   "description": "This a full stack project",
   "main": "index.js",
   "scripts": {
+    "install-server": "npm install --prefix server",
+    "install-client": "npm install --prefix client",
+    "install": "npm run install-server && npm run install-client",
     "deploy": "set BUILD_PATH=../server/public && npm run build --prefix client && npm start --prefix server",
     "deploy-cluster": "npm run build --prefix client && npm run cluster --prefix server",
     "server": "npm run watch --prefix server",

@@ -1,0 +1,1 @@
+{"version":3,"file":"static/css/main.0623b5c3.css","mappings":"AAAA,QAEI,aACJ,CAEA,MACI,aACJ","sources":["pages/pages.css"],"sourcesContent":["p,\r\ntd,tr {\r\n    color: rgb(12, 241, 241);    \r\n}\r\n\r\nlabel {\r\n    color: greenyellow\r\n}\r\n\r\n"],"names":[],"sourceRoot":""}
